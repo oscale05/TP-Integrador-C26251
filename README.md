@@ -39,16 +39,17 @@ en el entorno (`/content`).
 | Etapa | Actividades |
 |---|---|
 | **1 — Recopilación y preparación** | Carga de los 3 CSV · script de ventas mensuales en Python puro (variables y operadores) · estructuras de datos (lista vs diccionario, con decisión justificada) · EDA con Pandas · diagnóstico de calidad (35 duplicados + 2 nulos en `ventas.csv`) |
-| **2 — Preprocesamiento y limpieza** | Limpieza 3.035 → 2.998 filas (duplicados, nulos, `$` → numérico (importes en pesos argentinos, ARS), fechas) · filtro de alto rendimiento con criterio **P75 = ARS 51.093** (8 productos, 34,1 % de los ingresos) · agregación por categoría · integración ventas × marketing (agregada y por ventana temporal) · `clientes.csv` con dos enfoques y elección justificada |
+| **2 — Preprocesamiento y limpieza** | Limpieza 3.035 → 2.998 filas (duplicados, nulos, `$` → numérico, fechas) · filtro de alto rendimiento con criterio **P75 = ARS 51.093** (8 productos, 34,1 % de los ingresos) · agregación por categoría · integración ventas × marketing (agregada y por ventana temporal) |
+| **Final** | Análisis complementario de `clientes.csv` · conclusiones generales · bloque **Anexo** |
 
 ## Decisiones metodológicas
 
 - **Alto rendimiento = ingreso total por producto ≥ percentil 75.** Criterio relativo al dataset,
   robusto a outliers, equivalente al cuartil superior y auditable; comparado en el notebook contra
   P50 (no discrimina) y P90 (demasiado exigente).
-- **`clientes.csv` no se cruza con ventas.** No existe columna en común (`id_cliente` no está en
-  ventas); el cruce aleatorio se probó y se descartó por no ser reproducible (corr 0,974 entre el
-  ingreso asignado y la cantidad de clientes por ciudad). Se usa como análisis descriptivo.
+- **`clientes.csv` no se cruza con ventas.** No existe columna en común (`id_cliente` no figura en
+  ventas, ni ciudad ni ningún dato geográfico), por lo que se analiza en forma independiente como
+  perfil demográfico del negocio.
 - **Integración sin inflación de filas:** un `merge` directo de ventas × marketing multiplica por 3
   las filas (cada producto tiene 3 campañas); se agrega antes de unir y se atribuye por ventana temporal.
 
