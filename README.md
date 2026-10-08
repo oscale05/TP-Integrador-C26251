@@ -11,6 +11,7 @@ agregación e integración de datos con Python y Pandas.
 TP-Integrador-C26251/
 ├── TP_Integrador.ipynb      # notebook principal (Etapa 1 y 2, con resultados ejecutados)
 ├── README.md
+├── REPORTE.md                # reporte técnico: pasos y justificación de cada decisión
 ├── Pre.docx                 # consigna original
 ├── datos/
 │   ├── ventas.csv           # 3.035 registros — originales, sin modificar
@@ -41,6 +42,8 @@ en el entorno (`/content`).
 | **1 — Recopilación y preparación** | Carga de los 3 CSV · script de ventas mensuales en Python puro (variables y operadores) · estructuras de datos (lista vs diccionario, con decisión justificada) · EDA con Pandas · diagnóstico de calidad (35 duplicados + 2 nulos en `ventas.csv`) |
 | **2 — Preprocesamiento y limpieza** | Limpieza 3.035 → 2.998 filas (duplicados, nulos, `$` → numérico, fechas) · filtro de alto rendimiento con criterio **P75 = ARS 51.093** (8 productos, 34,1 % de los ingresos) · agregación por categoría · integración ventas × marketing (agregada y por ventana temporal) |
 | **Final** | Análisis complementario de `clientes.csv` · conclusiones generales · bloque **Anexo** |
+
+> El detalle de cada paso y la justificación de cada decisión están en [`REPORTE.md`](REPORTE.md).
 
 ## Decisiones metodológicas
 
